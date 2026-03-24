@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { jobRoutes } from "./routes/job.routes.js"; // note o .js aqui para ESM
-import { errorHandler } from "./middlewares/error.middleware.js";
+import { errorMiddleware } from "./middlewares/error.middleware.js";
 
 // Carrega variáveis do .env
 dotenv.config();
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/jobs", jobRoutes);
 
 // Middleware de erro
-app.use(errorHandler);
+app.use(errorMiddleware);
 
 // Porta do servidor
 const PORT = process.env.PORT || 3000;
